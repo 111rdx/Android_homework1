@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"> <!-- 浅灰背景 -->
+
+    <!-- 1. 顶部状态栏区域 -->
+    <View
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#333333"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 顶部图标和文字（Space Stations, Flights, Rovers） -->
+    <ImageView
+        android:id="@+id/ivTopStation"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/space_station_icon"
+        app:layout_constraintTop_toTopOf="@id/topBar"
+        app:layout_constraintBottom_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp" />
+    <TextView
+        android:text="Space Stations"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/ivTopStation"
+        app:layout_constraintTop_toTopOf="@id/ivTopStation"
+        app:layout_constraintBottom_toBottomOf="@id/ivTopStation"
+        android:layout_marginStart="8dp" />
+
+    <!-- 右侧的 Flights 和 Rovers 可以按需复制上面的模式添加，为简化先忽略 -->
+
+    <!-- 2. 中间的绿色卡片区域 (DCA 和 MARS) -->
+    <LinearLayout
+        android:id="@+id/llGreenCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp">
+
+        <!-- DCA 卡片 -->
+        <TextView
+            android:id="@+id/tvDCA"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="#2E7D32"
+            android:text="DCA"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="18sp" />
+
+        <!-- 中间的换向箭头 -->
+        <ImageView
+            android:id="@+id/ivSwap"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/double_arrows"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+
+        <!-- MARS 卡片 -->
+        <TextView
+            android:id="@+id/tvMARS"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="#2E7D32"
+            android:text="MARS"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- 3. One Way 单选框 -->
+    <LinearLayout
+        android:id="@+id/llOneWay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#F57C00"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/llGreenCards"
+        app:layout_constraintStart_toStartOf="@id/llGreenCards"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:text="One Way"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:buttonTint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- 4. 1 Traveller 按钮 -->
+    <TextView
+        android:id="@+id/tvTraveller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F57C00"
+        android:padding="10dp"
+        android:text="1 Traveller"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/llOneWay"
+        app:layout_constraintStart_toStartOf="@id/llOneWay"
+        android:layout_marginTop="10dp" />
+
+    <!-- 5. 中间下方的火箭+星系组合 -->
+    <ImageView
+        android:id="@+id/ivRocketBottom"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/rocket_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTraveller"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivGalaxyBottom"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:id="@+id/ivGalaxyBottom"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/galaxy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTraveller"
+        app:layout_constraintStart_toEndOf="@id/ivRocketBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <!-- 6. 底部的 DEPART 按钮 -->
+    <Button
+        android:id="@+id/btnDepart"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#2E7D32"
+        android:text="DEPART"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

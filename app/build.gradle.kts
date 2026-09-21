@@ -39,10 +39,14 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
+    }
 }
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
